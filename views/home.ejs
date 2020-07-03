@@ -1,0 +1,55 @@
+<%- include("partials/header") %>
+
+<section id="landing-page">
+    <div class="container-fluid row landing-page-row">
+
+        <div class="col-lg-6 col-md-push-6 quote">
+
+            <!-- quotes carousel -->
+            <div id="quotesCarousel" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner">
+
+                    <!-- 1 -->
+                    <div class="carousel-item active" data-interval="4000">
+                        <h2 class="landing-page-h2">
+                            <span style="font-size:48px">❝</span>So many books, so little time...
+                        </h2>
+                        <h4>-Frank Zappa</h4>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="carousel-item">
+                        <h2 class="landing-page-h2" data-interval="3000">
+                            <span style="font-size:48px">❝</span>There is no friend as loyal as a book.
+                        </h2>
+                        <h4>-Ernest Hemingway</h4>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="carousel-item" data-interval="3000">
+                        <h2 class="landing-page-h2">
+                            <span style="font-size:48px">❝</span>Be awesome! Be a book nut!
+                        </h2>
+                        <h4>–Dr. Seuss</h4>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- salutation -->
+        <div class="col-lg-6 col-lg-pull-6 sal">
+            <h2 class="landing-page-h2">Welcome to</h2>
+            <img class="landing-page-h1" src="Images/Read-Only.png" alt="Read-Only">
+        <form action="/books" method="GET">
+            <button style="font-family:'karla', sans-serif; color:#000; font-size:20px; padding:10px 20px "; class="btn btn-warning">Start Reading!</button>
+        </form>
+
+        </div>
+    </div>
+</section>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,34 @@
+<%-include('partials/bookHeader')%>
+
+
+<section id="book-summary">
+    
+    <div class="articulate-area">
+    
+        <button class="btn btn-outline-dark" onclick="speak('.book-summary-title,.book-summary-author,.disclaimer,.summary')"><i class="fas fa-volume-up"></i></button>
+        <button class="btn btn-outline-dark" onclick="pause()"><i class="far fa-pause-circle"></i></button>
+        <button class="btn btn-outline-dark" onclick="resume()"><i class="far fa-play-circle"></i></button>
+        <button class="btn btn-outline-dark" onclick="stop()"><i class="far fa-stop-circle"></i></button>
+        
+    </div>
+    
+    <h1 class="book-summary-title"><strong><%=title%></strong></h1>
+ 
+    <h3 class="book-summary-author"><strong><%=author%></strong></h3>
+ 
+    <img class="book-summary-img" height="550" width="375" src=<%=img%> alt="book-img">
+ 
+    <div class="disclaimer text-muted">The following contains a condensed form of the book <%=title%>. These are my
+        learnings from the book. Hope you enjoy reading and takeaway something good.
+    </div>
+
+    <div class="summary"><%-summary%></div>
+
+</section>
+
+
+<%-include('partials/footer')%>
+
+
+<!-- here pre tage is used because we are entering prefomatted text, and not html text. in html newlines "\n" and whitespaces 
+are all treated as a single whitespace. -->

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Read-Only | <%=title%></title>
+
+    <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+    <!-- CSS Link -->
+        <link rel="stylesheet" href="/css/styles.css">
+</head>    
+<body>
+    <section id="postArticle">
+            <h1>This page is for publishing a new article.</h1>
+            <form action="/books/<%=title%>" method="POST">
+                <table class="article-table">
+                    
+                    <tr>
+                    
+                        <td> Title </td>
+                        <td><input type="text" name="title" placeholder="Title" autocomplete="off" required></td>
+                    
+                    </tr>
+                    
+                    <tr>
+                    
+                        <td>Author</td>
+                        <td><input type="text" name="author" placeholder="Author" autocomplete="off" required></td>
+                    
+                    </tr>
+                    
+                    <tr>
+                    
+                        <td>Publisher</td>
+                        <td><input type="text" name="condenser" placeholder="Write your name." autocomplete="off"
+                                required></td>
+                    
+                    </tr>
+                    
+                    <tr>
+                    
+                        <td>Image</td>
+                        <td><input type="text" name="img" placeholder="Image Address" autocomplete="off" required></td>
+                    
+                    </tr>
+
+                    <tr>
+                    
+                        <td> Genre </td>
+                        <td><input type="text" name="genre" placeholder="Title" autocomplete="off" required></td>
+                    
+                    </tr>
+                    
+                    <tr>
+                        <td>Summary</td>
+
+                        <td>
+
+                            <textarea name="summary" cols="150" rows="20" placeholder="Write your summary here."></textarea>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Publish/Preview</td>
+
+                        <td>
+
+                            <button type="submit" class="btn btn-primary">Done</button> 
+
+                        </td>
+
+                    </tr>
+
+            </table>
+
+        </form>
+
+    </section>
+
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

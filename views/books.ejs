@@ -1,0 +1,63 @@
+<%-include('partials/bookHeader')%>
+<section id="books">
+    
+    <!-- search bar -->
+    <div class="search-bar"> 
+
+        <form style="width:100%" action="/books">
+                <input style="height:50px;width:100%;padding:5px;border-style:solid;border-radius:10px;border-color:#1b6ca8" type="search" placeholder="The searchbar is under construction.">
+        </form>
+
+    </div>
+    <!-- ---------- -->
+
+    <!-- list of books -->
+    <div class="book-list row">
+            <%bookList.forEach((book)=>{ %>
+                <div class="col-lg-4 col-md-6 book-col"> 
+                    
+                    <!-- single book card -->
+                    <div class="book-card card mb-3">
+                    
+                        <div class="row no-gutters">
+                    
+                            <div class="col-md-3 col-sm-3">
+                                <img class="book-image" height="85%" width="100%" src="<%=book.img%>" class="card-img" alt=<%=book.title%>>
+                            </div>
+                    
+                            <div  class="col-md-9 col-sm-9">
+                                
+                                <div class="card-body">
+                                    
+                                    <!--book name-->
+                                    <h5 class="card-title"><strong><%=book.title.substring(0,20)%></strong></h5> 
+                                    <!--author name-->
+                                    <h6>-<%=book.author.substring(0,28)%></h6>
+
+                                    <p class="card-text"><small class="text-muted"><%=book.genre%></small></p>
+                                    
+                                    <form action=<%="/books/"+encodeURI(book.title)%> method="get">
+                                        
+                                        <button type="submit" class="btn btn-block btn-outline-info">
+                                            <span style="color:#ffc510"><strong>READ</strong></span>
+                                        </button>
+                                    
+                                    </form>
+                                
+                                </div>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            <%})%>
+        </div>
+</section>
+<%- include("partials/footer") %>
+
+
+
+
