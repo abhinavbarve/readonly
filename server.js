@@ -26,6 +26,13 @@ app.get("/help", (req,res)=>{
     res.render("help",{title:"Help"})
 })
 
+// why-ro
+app.get("/why-ro", (req,res) => {
+    res.render("why-ro", {title:"Why Read-Only?"})
+})
+
+
+// js pluggins
 
 // navbar code
 app.get("/js/navbar.js", (req,res) =>{
@@ -37,15 +44,16 @@ app.get("/js/articulate.min.js", (req,res) =>{
     res.sendFile(__dirname + "/js/articulate.min.js")
 })
 
-
-// why-ro
-app.get("/why-ro", (req,res) => {
-    res.render("why-ro", {title:"Why Read-Only?"})
-})
+// end of js pluggins
 
 
+
+
+
+
+const book_names=[]
 // database connection // books RESTfull API
-mongoose.connect(process.env.DATABASE_ADD,{useNewUrlParser : true,useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://admin-abhinav:masadies06@abhinav-cluster.nbr4w.mongodb.net/bookDB",{useNewUrlParser : true,useUnifiedTopology: true })
 
 // bookSchema
 const bookSchema = {
@@ -62,11 +70,27 @@ const bookSchema = {
 // collection of books
 const Book = mongoose.model("Book", bookSchema)
 
+Book.find({},(err, foundBooks)=>{
+        if(!err){
+            if(foundBooks){
+               foundBooks.forEach((book)=>{
+                   book_names.push(book.title)
+               })
+
+            }else{
+                console.log("we did not find the book.")
+            }
+        }else{
+            res.send(err)
+        }
+        
+})
+
 app.get("/books", (req,res)=>{
     Book.find({},(err, foundBooks)=>{
         if(!err){
             if(foundBooks){
-                res.render("books", {title:"Books", bookList: foundBooks})
+                res.render("books", {title:"Books", bookList: foundBooks})  
             }else{
                 console.log("we did not find the book.")
             }
@@ -75,6 +99,11 @@ app.get("/books", (req,res)=>{
         }
         
     })
+})
+
+
+app.get("/booksData", (req,res)=>{
+    res.send(book_names)
 })
 
 
@@ -205,6 +234,5 @@ app.post("/published", (req,res)=>{
 })
 
 app.listen(process.env.PORT || 8080,function(){
-    console.log(process.env.PORT)
     console.log("Server is running on port 8080")
 }) 

@@ -1,5 +1,6 @@
 databaseLogin.ejs/
-
+bookList.ejs
+data.json
 # Logs
 logs
 *.log

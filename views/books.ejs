@@ -1,12 +1,15 @@
 <%-include('partials/bookHeader')%>
+
 <section id="books">
     
     <!-- search bar -->
     <div class="search-bar"> 
 
-        <form style="width:100%" action="/books">
-                <input style="height:50px;width:100%;padding:5px;border-style:solid;border-radius:10px;border-color:#1b6ca8" type="search" placeholder="The searchbar is under construction.">
-        </form>
+                <input 
+                
+                style="height:50px;width:100%;padding:5px;border:2px solid #1b6ca8; border-radius: 5px; " 
+                
+                type="search" class= "typeahead searchBook" autocomplete="off" placeholder="Search Books..">
 
     </div>
     <!-- ---------- -->
@@ -31,6 +34,7 @@
                                     
                                     <!--book name-->
                                     <h5 class="card-title"><strong><%=book.title.substring(0,20)%></strong></h5> 
+                                    
                                     <!--author name-->
                                     <h6>-<%=book.author.substring(0,28)%></h6>
 
@@ -56,7 +60,9 @@
             <%})%>
         </div>
 </section>
+
 <%- include("partials/footer") %>
+
 
 
 

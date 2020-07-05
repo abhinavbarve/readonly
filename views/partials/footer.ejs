@@ -3,10 +3,13 @@
     <p class="my-name">by Abhinav Barve</p>
 </footer>
 
-
+    
     <script src="/js/navbar.js"></script>
     <!-- articulate.js pluggin -->
     <script src="/js/articulate.min.js"></script>
+
+
+    <!-- calling articulate.js -->
     <script>
         function speak(obj) {
         $(obj).articulate('speak');
@@ -26,10 +29,40 @@
         function stop() {
         $().articulate('stop');
         };
-
+    
+    
 
     </script>
 
+    <!-- typeahead.js cdn for search bar -->
+    <script  type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    
+    <!-- calling typeahead -->
+    <script>
+    $(document).ready(function(){
+
+        var books = ["Atomic Habits", "The Compound Effect",""]
+
+        // Constructing the suggestion engine
+        var books = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch : ""
+        });
+        
+        // Initializing the typeahead
+        $('.typeahead').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1 
+        },
+        {
+            name: 'books',
+            source: books
+        });
+    });  
+    </script>
+    
 </body>
 </html> 
 

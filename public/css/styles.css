@@ -30,7 +30,7 @@ a:hover{
     position: sticky;
     top:0px;
     background-color: #1b6ca8;
-    z-index:2
+    z-index:10;
 }
 
 .nav{
@@ -208,9 +208,32 @@ a{
     border-color:#1b6ca8;
     max-width:400px;
 }
-.search-bar{
-    margin: 20px;
-}
+
+    /* search bar */
+
+    .search-bar{
+        margin: 20px auto;
+        width:100%;
+        font-size : 1.2rem;
+
+    }
+    .tt-suggestion{
+        width:100%;
+        text-align:left;
+        z-index: inherit;
+        border : 2px solid rgb(78, 78, 78);
+        padding:5px;
+        background:white;
+        font-family : "karla", sans-serif;
+        font-size : 1.2rem;
+        color: rgb(78, 78, 78)
+    }
+    .tt-suggestion:hover{
+        background : rgb(190, 190, 190);
+        color : #000
+    }
+
+    /* --------------- */
 .book-image{
     height:85%;
     width:100%
