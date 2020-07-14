@@ -30,7 +30,6 @@
         $().articulate('stop');
         };
     
-    
 
     </script>
 
@@ -39,15 +38,16 @@
     
     <!-- calling typeahead -->
     <script>
+
     $(document).ready(function(){
 
-        var books = ["Atomic Habits", "The Compound Effect",""]
+        books = ['Atomic Habits', 'The Compound Effect', 'Deep Work', 'Rework', '12 Rules for Life', 'How To Win Friends And Influence People' ]
 
         // Constructing the suggestion engine
         var books = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch : ""
+            local : books
         });
         
         // Initializing the typeahead
@@ -64,5 +64,4 @@
     </script>
     
 </body>
-</html> 
-
+</html>

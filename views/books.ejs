@@ -4,13 +4,13 @@
     
     <!-- search bar -->
     <div class="search-bar"> 
-
+        <form action="/books/<%=bookTitle%>" method="GET"> 
                 <input 
                 
-                style="height:50px;width:100%;padding:5px;border:2px solid #1b6ca8; border-radius: 5px; " 
+                style="height:50px;width:100%;padding:5px;border:2px solid #1b6ca8; border-radius: 5px;" 
                 
-                type="search" class= "typeahead searchBook" autocomplete="off" placeholder="Search Books..">
-
+                type="search" name="bookName" class= "typeahead searchBook" autocomplete="off" placeholder="Search Bar is under construction">
+        </form>
     </div>
     <!-- ---------- -->
 
@@ -36,7 +36,7 @@
                                     <h5 class="card-title"><strong><%=book.title.substring(0,20)%></strong></h5> 
                                     
                                     <!--author name-->
-                                    <h6>-<%=book.author.substring(0,28)%></h6>
+                                    <h6>- <%=book.author.substring(0,28)%></h6>
 
                                     <p class="card-text"><small class="text-muted"><%=book.genre%></small></p>
                                     

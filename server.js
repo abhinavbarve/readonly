@@ -32,28 +32,27 @@ app.get("/why-ro", (req,res) => {
 })
 
 
-// js pluggins
+//// js pluggins
 
-// navbar code
-app.get("/js/navbar.js", (req,res) =>{
-    res.sendFile(__dirname + "/js/navbar.js")
-})
+    // navbar code
+    app.get("/js/navbar.js", (req,res) =>{
+        res.sendFile(__dirname + "/js/navbar.js")
+    })
 
-//articulate.js pluggin
-app.get("/js/articulate.min.js", (req,res) =>{
-    res.sendFile(__dirname + "/js/articulate.min.js")
-})
+    //articulate.js pluggin
+    app.get("/js/articulate.min.js", (req,res) =>{
+        res.sendFile(__dirname + "/js/articulate.min.js")
+    })
+
 
 // end of js pluggins
 
 
 
-
-
-
-const book_names=[]
 // database connection // books RESTfull API
 mongoose.connect("mongodb+srv://admin-abhinav:masadies06@abhinav-cluster.nbr4w.mongodb.net/bookDB",{useNewUrlParser : true,useUnifiedTopology: true })
+
+
 
 // bookSchema
 const bookSchema = {
@@ -70,40 +69,22 @@ const bookSchema = {
 // collection of books
 const Book = mongoose.model("Book", bookSchema)
 
-Book.find({},(err, foundBooks)=>{
-        if(!err){
-            if(foundBooks){
-               foundBooks.forEach((book)=>{
-                   book_names.push(book.title)
-               })
-
-            }else{
-                console.log("we did not find the book.")
-            }
-        }else{
-            res.send(err)
-        }
-        
-})
-
 app.get("/books", (req,res)=>{
     Book.find({},(err, foundBooks)=>{
+
         if(!err){
+         
             if(foundBooks){
-                res.render("books", {title:"Books", bookList: foundBooks})  
+                res.render("books", {title: "Books", bookList: foundBooks, bookTitle    : req.body.bookName})  
             }else{
                 console.log("we did not find the book.")
             }
+        
         }else{
             res.send(err)
         }
         
     })
-})
-
-
-app.get("/booksData", (req,res)=>{
-    res.send(book_names)
 })
 
 
