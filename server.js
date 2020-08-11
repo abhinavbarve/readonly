@@ -50,7 +50,7 @@ app.get("/why-ro", (req,res) => {
 
 
 // database connection // books RESTfull API
-mongoose.connect("mongodb+srv://admin-abhinav:masadies06@abhinav-cluster.nbr4w.mongodb.net/bookDB",{useNewUrlParser : true,useUnifiedTopology: true })
+mongoose.connect(process.env.DATABASE_KEY,{useNewUrlParser : true,useUnifiedTopology: true })
 
 
 
@@ -202,9 +202,11 @@ app.get("/databaseLogin",(req,res)=>{
 app.post("/publishArticle", (req,res)=>{ 
     const username= req.body.username
     const password= req.body.password
-    const bookTitleURL = encodeURI(req.body.bookTitle) 
-    if(username===process.env.DATABASE_USERNAME && password===process.env.DATABASE_PASSWORD){
+    // const bookTitleURL = encodeURI(req.body.bookTitle) 
+    if(username === process.env.DATABASE_USERNAME && password === process.env.DATABASE_PASSWORD){
         res.render("publishArticle",{title : "Publish Article"})
+    }else{
+        res.redirect("/databaseLogin")
     }
 
 })
