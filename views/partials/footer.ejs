@@ -39,27 +39,44 @@
     <!-- calling typeahead -->
     <script>
 
-    $(document).ready(function(){
+    $(document).ready( () => {
 
-        books = ['Atomic Habits', 'The Compound Effect', 'Deep Work', 'Rework', '12 Rules for Life', 'How To Win Friends And Influence People' ]
+        async function getBooks() {
+    
+            await fetch('http://localhost:8080/database/bookList')
+                .then(response => {
+                    
+                    response.json().then((result) => {
+    
+                        bookList = result
+                        // console.log(bookList)
+                        var books = new Bloodhound({
+                            datumTokenizer: Bloodhound.tokenizers.whitespace,
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
 
-        // Constructing the suggestion engine
-        var books = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local : books
-        });
-        
-        // Initializing the typeahead
-        $('.typeahead').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1 
-        },
-        {
-            name: 'books',
-            source: books
-        });
+                            local: bookList 
+
+                        });
+
+                        // Initializing the typeahead
+                        $('.typeahead').typeahead({
+                            hint: true,
+                            highlight: true,
+                            minLength: 1
+                        },
+                            {
+                                name: 'books',
+                                source: books,
+                            });                        
+    
+                    })
+
+                })
+    
+        }
+       
+        getBooks()
+
     });  
     </script>
     

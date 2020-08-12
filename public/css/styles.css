@@ -30,7 +30,7 @@ a:hover{
     position: sticky;
     top:0px;
     background-color: #1b6ca8;
-    z-index:10;
+    z-index:110;
 }
 
 .nav{
@@ -217,21 +217,31 @@ a{
         font-size : 1.2rem;
 
     }
+    .tt-menu{
+        position: absolute;
+        left: 0px; 
+        z-index: 2; 
+        display: block;
+    }
     .tt-suggestion{
         width:100%;
+        padding:5px 10px;
         text-align:left;
-        z-index: inherit;
-        border : 2px solid rgb(78, 78, 78);
-        padding:5px;
+        color: rgb(78, 78, 78);
+        font-size : 1.2rem;
+        border-style: none solid solid solid;
+        border-color: rgb(78, 78, 78);
+        box-shadow: 0 0 2px rgb(78, 78, 78) ;
+        border-width:0.1px;
         background:white;
         font-family : "karla", sans-serif;
-        font-size : 1.2rem;
-        color: rgb(78, 78, 78)
     }
     .tt-suggestion:hover{
         background : rgb(190, 190, 190);
         color : #000
     }
+
+
 
     /* --------------- */
 .book-image{
@@ -240,7 +250,7 @@ a{
 }
 
 .btn-outline-info{
-    border-radius : 3px
+    border-radius : 3px;
 }
 
 .btn-outline-info:hover{
@@ -297,7 +307,13 @@ a{
 
 /* -------------------------------------------------------------------- */
 
-@media screen and (max-width:800px) and (min-width : 600px){
+@media screen and (max-width:1400px) and (min-width:600px){
+    #books{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:1000px) and (min-width : 768px){
     .landing-page-row,.nav,#books,.read-only-about,#book-summary,.help-qna{
         width:90%
     }
@@ -307,9 +323,12 @@ a{
     .book-col{
         text-align:center
     }
+    .book-card{
+        margin:auto
+    }
 }
 
-@media screen and (max-width:600px) and (min-width:100px){
+@media screen and (max-width:768px) and (min-width:200px){
     .landing-page-row,.nav,#books,#book-summary,.disclaimer{
         width:95%;
     }
@@ -325,10 +344,12 @@ a{
         margin-left:12px
     }
     .links{
-        text-align:right
+        text-align:right;
     }
     .book-card{
         text-align:center;
+        width:100%;
+        margin:auto;
     }
     .landing-page-h2{
         font-size: 1.5rem

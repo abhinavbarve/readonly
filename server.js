@@ -45,13 +45,11 @@ app.get("/why-ro", (req,res) => {
     })
 
 
-// end of js pluggins
-
 
 
 // database connection // books RESTfull API
 mongoose.connect(process.env.DATABASE_KEY,{useNewUrlParser : true,useUnifiedTopology: true })
-
+    
 
 
 // bookSchema
@@ -68,14 +66,14 @@ const bookSchema = {
 
 // collection of books
 const Book = mongoose.model("Book", bookSchema)
-
+ 
 app.get("/books", (req,res)=>{
     Book.find({},(err, foundBooks)=>{
 
         if(!err){
          
             if(foundBooks){
-                res.render("books", {title: "Books", bookList: foundBooks, bookTitle    : req.body.bookName})  
+                res.render("books", {title: "Books", bookList: foundBooks, bookTitle : req.body.bookTitle})  
             }else{
                 console.log("we did not find the book.")
             }
@@ -89,12 +87,12 @@ app.get("/books", (req,res)=>{
 
 
 // book
-app.route("/books/:bookTitle")
+app.route("/books/:bookTitle") 
 
     // find a published book document.
     .get((req,res) => {
 
-        Book.findOne({title : req.params.bookTitle}, (err, foundBook)=> {
+        Book.findOne({title: req.params.bookTitle}, (err, foundBook)=> {
             if(!err){
                 if(foundBook){
                     res.render("book", {title : foundBook.title, 
@@ -186,9 +184,15 @@ app.route("/books/:bookTitle")
     })
 // end of website server
 
+app.post("/search", (req, res) => {
+    const bookName = req.body.bookTitle 
+    res.redirect("/books/"+bookName)  
+})
+
 
 
 // _____________________
+
 
 
 
@@ -199,12 +203,24 @@ app.get("/databaseLogin",(req,res)=>{
     res.render("databaseLogin")
 })
 
-app.post("/publishArticle", (req,res)=>{ 
+
+app.get("/database/bookList", (req, res) => {
+    
+    Book.find({}, (err, foundBooks) => {
+        const bookList = []
+        foundBooks.forEach((book) => { bookList.push(book.title) })
+        res.send(bookList)
+    })
+    
+})
+
+
+app.post("/publishArticle", (req, res) => { 
     const username= req.body.username
     const password= req.body.password
     // const bookTitleURL = encodeURI(req.body.bookTitle) 
     if(username === process.env.DATABASE_USERNAME && password === process.env.DATABASE_PASSWORD){
-        res.render("publishArticle",{title : "Publish Article"})
+        res.render("publishArticle",{title : "Publish Article"}) 
     }else{
         res.redirect("/databaseLogin")
     }

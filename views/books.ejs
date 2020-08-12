@@ -3,13 +3,13 @@
 <section id="books">
     
     <!-- search bar -->
+    
     <div class="search-bar"> 
-        <form action="/books/<%=bookTitle%>" method="GET"> 
-                <input 
-                
-                style="height:50px;width:100%;padding:5px;border:2px solid #1b6ca8; border-radius: 5px;" 
-                
-                type="search" name="bookName" class= "typeahead searchBook" autocomplete="off" placeholder="Search Bar is under construction">
+        <form action="/search" method="post">
+                <input style="height:40px;padding:5px;border:1px solid #1b6ca8; border-radius: 3px;outline: none"
+                type="text" name="bookTitle" class= "typeahead searchBook" autocomplete="off" placeholder="Find Books...">
+                <button class="btn btn-outline-secondary search-button" type="submit"><i class="fas fa-search"></i></button>
+
         </form>
     </div>
     <!-- ---------- -->
@@ -25,7 +25,7 @@
                         <div class="row no-gutters">
                     
                             <div class="col-md-3 col-sm-3">
-                                <img class="book-image" height="85%" width="100%" src="<%=book.img%>" class="card-img" alt=<%=book.title%>>
+                                <img class="book-image" src=<%=book.img%> class="card-img" alt=<%=book.title%> > 
                             </div>
                     
                             <div  class="col-md-9 col-sm-9">
